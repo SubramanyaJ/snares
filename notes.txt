@@ -1,0 +1,22 @@
+Workflow :
+	1. Use libconfig to read the configuration file,
+	   /etc/snares/snares.conf.
+	2. Parse the URLs.
+	3. Store them in a data structure.
+
+	4. Create a systemd daemon.
+	(5. Add daemon logging ???)
+
+	6. Use libnetfilter_queue to intercept packets (using a callback,
+	   I believe).
+		TODO : Check how multiple packets are queued.
+
+	7. Retrieve the packet data.
+	8. Extract URL.
+	9. Check for any matches from the block list.
+	10. Drop the packet if it doesn't match any URLs blocked.
+	    Else, let the packet pass.
+	11. Make sure the dropped packets are logged.
+
+	12. Ensure proper startup and shutdown.
+	    Free resources before shutting down.
